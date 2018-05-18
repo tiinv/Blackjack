@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class PelaajanKasi {
 
+    //pelaajan käsi -luokka
     Scanner assanArvo = new Scanner(System.in);
 
     int summa;
