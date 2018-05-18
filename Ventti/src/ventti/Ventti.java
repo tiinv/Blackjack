@@ -21,6 +21,7 @@ public class Ventti {
     public static void main(String[] args) {
         
         //testing testing
+        //lisää testausta
 
         Scanner lukija = new Scanner(System.in);
         Pakka ventti = new Pakka();
