@@ -23,6 +23,8 @@ public class Ventti {
         //testing testing
         //lisää testausta
 
+=======
+>>>>>>> 3035c4879536dc1d62d67e7f3d06b161edc5ea91
         Scanner lukija = new Scanner(System.in);
         Pakka ventti = new Pakka();
         PelaajanKasi pelaaja = new PelaajanKasi();
