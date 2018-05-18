@@ -20,6 +20,8 @@ public class Ventti {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //testing testing
 
         Scanner lukija = new Scanner(System.in);
         Pakka ventti = new Pakka();
