@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class PelaajanKasi {
 
     //pelaajan käsi -luokka
+    //wiffkefihwefifj
     Scanner assanArvo = new Scanner(System.in);
 
     int summa;
