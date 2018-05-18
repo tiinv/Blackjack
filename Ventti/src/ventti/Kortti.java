@@ -13,6 +13,8 @@ public class Kortti {
 
     private Suit suit;
     private Rank rank;
+    
+    //iefiekekj
 
     public enum Suit {
         PATA, HERTTA, RUUTU, RISTI 
