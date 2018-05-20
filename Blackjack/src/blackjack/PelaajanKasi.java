@@ -45,6 +45,7 @@ public class PelaajanKasi {
         
         return pelajansumma; 
     }
+    //metodi joka tarkista onko kätenä blackjack
     public boolean onkoBlackjack () {
         boolean onkoBlackjack = false;
         if (kortit.size() == 2) {

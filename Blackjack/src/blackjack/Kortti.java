@@ -14,8 +14,8 @@ public class Kortti {
     private int arvo; 
     private String maa;
     
-    //kääntä suomeksi
-    public static final String[] MAA = { "hearts", "spades", "diamonds", "clubs" };
+    
+    public static final String[] MAA = { "hertta", "risti", "ruutu", "pata" };
     public static final int[] ARVO = {1, 2, 3, 4, 5, 6, 7,
                                       8, 9, 10, 11, 12, 13};
 
