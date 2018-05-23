@@ -17,16 +17,22 @@ public class Korttipakka {
 
     //toistaiseksi kierrätyskoodia Ventistä:
     private ArrayList<Kortti> kortit;
+    int maara;
 
     //luodaan kortit pakkaan:
-    Korttipakka() {
+    Korttipakka(int maara) {
+        this.maara = maara;
 
-        kortit = new ArrayList<>();
+        int i = 0;
+        while (i <= maara) {
+            kortit = new ArrayList<>();
 
-        for (Kortti.Suit s : Kortti.Suit.values()) {
-            for (Kortti.Rank r : Kortti.Rank.values()) {
-                kortit.add(new Kortti(r, s));
+            for (Kortti.Suit s : Kortti.Suit.values()) {
+                for (Kortti.Rank r : Kortti.Rank.values()) {
+                    kortit.add(new Kortti(r, s));
+                }
             }
+            i++;
         }
     }
 
@@ -36,11 +42,21 @@ public class Korttipakka {
     }
 
     //nostetaan kortti ja poistetaan se pakasta:
-    public Kortti nostaKortti() {
+    public Kortti jaaKortti() {
         Kortti nostettu = kortit.get(0);
         kortit.remove(0);
         {
             return nostettu;
         }
+    }
+
+    @Override
+    public String toString() {
+        String result = kortit.size() + " cards:" + System.lineSeparator();
+        for (Kortti card : kortit) {
+            result = result.concat(card + System.lineSeparator());
+        }
+
+        return result;
     }
 }
