@@ -20,13 +20,15 @@ public class Blackjack {
         Scanner lukija = new Scanner(System.in);
         Korttipakka testipakka = new Korttipakka(1);
         PelaajanKasi pelaaja = new PelaajanKasi();
+        PelaajanKasi tietokone = new PelaajanKasi();
+
         testipakka.sekoitaPakka();
         pelaaja.otaKortti(testipakka.jaaKortti());
         pelaaja.otaKortti(testipakka.jaaKortti());
         pelaaja.selvitaSumma();
         pelaaja.onkoBlackjack();
 
-        while (pelaaja.pelaajanSumma < 21) {
+        while (pelaaja.pelaajanSumma <= 21) {
             System.out.println("Nosta kortti? Y/N");
             String vastaus = lukija.nextLine();
             if (vastaus.equalsIgnoreCase("Y")) {
@@ -38,6 +40,34 @@ public class Blackjack {
                 System.out.println("Tunnistamaton vastaus. Kirjoita Y tai N.");
             }
 
+        }
+
+        System.out.println("Vuoro siirtyy...");
+
+        while (tietokone.pelaajanSumma <= 21) {
+            if (tietokone.pelaajanSumma < 15) {
+                tietokone.otaKortti(testipakka.jaaKortti());
+            } else {
+                break;
+            }
+
+        }
+
+        // Ratkaistaan voittaja:
+        if (tietokone.pelaajanSumma == 21 && pelaaja.pelaajanSumma == 21) {
+            System.out.println("Tasapeli!");
+        } else if (pelaaja.pelaajanSumma != 21 && tietokone.pelaajanSumma == 21) {
+            System.out.println("Blackjack, tietokone voittaa!");
+        } else if (pelaaja.pelaajanSumma == 21 && tietokone.pelaajanSumma != 21) {
+            System.out.println("Blackjack, voitit!");
+        } else if (pelaaja.pelaajanSumma > 21 && tietokone.pelaajanSumma < 21) {
+            System.out.println("Tietokone voittaa!");
+        } else if (pelaaja.pelaajanSumma < 21 && tietokone.pelaajanSumma > 21) {
+            System.out.println("Voitit!");
+        } else if (pelaaja.pelaajanSumma > tietokone.pelaajanSumma) {
+            System.out.println("Voitit!");
+        } else {
+            System.out.println("Hävisit pelin!");
         }
 
     }
