@@ -15,34 +15,29 @@ import java.util.Collections;
  */
 public class Korttipakka {
 
-    //toistaiseksi kierrätyskoodia Ventistä:
-    private ArrayList<Kortti> kortit;
-    int maara;
+    private final ArrayList<Kortti> kortit;
 
-    //luodaan kortit pakkaan:
-    Korttipakka(int maara) {
-        this.maara = maara;
+    Korttipakka() {
+        kortit = new ArrayList<>();
 
-        int i = 0;
-        while (i <= maara) {
-            kortit = new ArrayList<>();
-
-            for (Kortti.Suit s : Kortti.Suit.values()) {
-                for (Kortti.Rank r : Kortti.Rank.values()) {
-                    kortit.add(new Kortti(r, s));
-                }
+        for (String maa : Kortti.MAA) {
+            for (int arvo : Kortti.ARVO) {
+                kortit.add(new Kortti(maa, arvo));
             }
-            i++;
         }
     }
 
-    //sekoitetaan pakka:
     public void sekoitaPakka() {
         Collections.shuffle(this.kortit);
+
     }
 
-    //nostetaan kortti ja poistetaan se pakasta:
     public Kortti jaaKortti() {
+
+        if (kortit.size() == 0) {
+            System.out.println("Kortit loppuivat!");
+            System.exit(0); //pakka on käytetty, ohjelma sulkeutuu
+        }
         Kortti nostettu = kortit.get(0);
         kortit.remove(0);
         {
@@ -50,13 +45,4 @@ public class Korttipakka {
         }
     }
 
-    @Override
-    public String toString() {
-        String result = kortit.size() + " cards:" + System.lineSeparator();
-        for (Kortti card : kortit) {
-            result = result.concat(card + System.lineSeparator());
-        }
-
-        return result;
-    }
 }

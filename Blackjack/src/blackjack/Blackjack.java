@@ -18,7 +18,7 @@ public class Blackjack {
      */
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
-        Korttipakka testipakka = new Korttipakka(1);
+        Korttipakka testipakka = new Korttipakka();
         PelaajanKasi pelaaja = new PelaajanKasi();
         PelaajanKasi tietokone = new PelaajanKasi();
 
@@ -26,7 +26,7 @@ public class Blackjack {
         pelaaja.otaKortti(testipakka.jaaKortti());
         pelaaja.otaKortti(testipakka.jaaKortti());
         pelaaja.selvitaSumma();
-        pelaaja.onkoBlackjack();
+        // pelaaja.onkoBlackjack();
 
         while (pelaaja.pelaajanSumma <= 21) {
             System.out.println("Nosta kortti? Y/N");
@@ -42,6 +42,7 @@ public class Blackjack {
 
         }
 
+        System.out.println("Summa: " + pelaaja.pelaajanSumma);
         System.out.println("Vuoro siirtyy...");
 
         while (tietokone.pelaajanSumma <= 21) {

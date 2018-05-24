@@ -13,50 +13,49 @@ import java.util.ArrayList;
  */
 public class PelaajanKasi {
 
-    int summa;
-    int nostetunArvo = 0;
-
     private ArrayList<Kortti> kortit;
 
-    public PelaajanKasi() {
-        this.summa = 0;
+    public void otaKortti(Kortti kortti) {
+        kortit.add(kortti);
     }
 
-    public void otaKortti(Kortti nostettu) {
-        kortit.add(nostettu);
-        int nostetunArvo = nostettu.getRank().getValue();
+    public int selvitaSumma() {
+        int pelajansumma = 0;
 
-    }
-
-    public void selvitaSumma() {
-
-        if (nostetunArvo == 14) {
-            summa = summa + 11;
-        } else if (nostetunArvo >= 2 || nostetunArvo <= 10) {
-            summa = summa + nostetunArvo;
+        if (kortit.size() == 0) {
+            System.out.println("Pelajalla ei ole vielä korteja, ota kortti!");
         } else {
-            summa = summa + 10;
+            for (Kortti kortti : kortit) {
+                int kortinArvo = kortti.getArvo();
+                if (kortinArvo > 1 && kortinArvo <= 10) {
+                    pelajansumma = +kortinArvo;
+                } else if (kortinArvo >= 11 && kortinArvo <= 13) {
+                    pelajansumma = +10;
+                } else {
+                    pelajansumma = +11;
+                }
+            }
+
+            if (pelajansumma > 21) {
+                pelajansumma = -10;
+            }
         }
 
-        if (summa == 21) {
-            summa = summa - 10;
+        return pelajansumma;
+    }
+
+    //metodi joka tarkista onko kätenä blackjack
+    public boolean onkoBlackjack() {
+        boolean onkoBlackjack = false;
+        if (kortit.size() == 2) {
+            int kortin1Arvo = kortit.get(0).getArvo();
+            int kortin2Arvo = kortit.get(1).getArvo();
+            boolean tarkastusEhto = (kortin1Arvo == 1 && (kortin2Arvo >= 10 && kortin2Arvo <= 13))
+                    || (kortin2Arvo == 1 && (kortin1Arvo >= 10 && kortin1Arvo <= 13));
+            if (tarkastusEhto) {
+                onkoBlackjack = true;
+            }
         }
+        return onkoBlackjack;
     }
-
-    public int pelaajanSumma;
-
-    {
-        this.summa = pelaajanSumma;
-    }
-
-    public boolean onkoBlackjack;
-
-    public void onkoBlackjack() {
-
-        if (kortit.contains("jätkä") || kortit.contains("kuningatar") || kortit.contains("kuningas") && kortit.contains("ässä")) {
-            boolean onkoBlackjack = true;
-            System.out.println("Blackjack!");
-        }
-    }
-
 }
