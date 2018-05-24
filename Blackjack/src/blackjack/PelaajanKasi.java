@@ -32,11 +32,11 @@ public class PelaajanKasi {
             for (Kortti kortti : kortit) {
                 int kortinArvo = kortti.getArvo();
                 if (kortinArvo > 1 && kortinArvo <= 10) {
-                    pelaajanSumma = +kortinArvo;
+                    pelaajanSumma =+ kortinArvo;
                 } else if (kortinArvo >= 11 && kortinArvo <= 13) {
-                    pelaajanSumma = +10;
+                    pelaajanSumma =+ 10;
                 } else {
-                    pelaajanSumma = +11;
+                    pelaajanSumma =+ 11;
                 }
             }
 
@@ -45,6 +45,10 @@ public class PelaajanKasi {
             }
         }
 
+        return pelaajanSumma;
+    }
+    
+    public int naytaSumma() {
         return pelaajanSumma;
     }
 
