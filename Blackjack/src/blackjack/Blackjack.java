@@ -71,7 +71,7 @@ public class Blackjack {
             }
 
             // Ratkaistaan voittaja:
-            if (tietokone.summa == 21 && pelaaja.summa == 21) {
+            if (tietokone.summa == pelaaja.summa) {
                 System.out.println("Tasapeli!");
             } else if (pelaaja.summa != 21 && tietokone.summa == 21) {
                 System.out.println("Blackjack, tietokone voittaa!");
