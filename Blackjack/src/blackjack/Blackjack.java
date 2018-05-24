@@ -21,20 +21,24 @@ public class Blackjack {
         Korttipakka testipakka = new Korttipakka();
         PelaajanKasi pelaaja = new PelaajanKasi();
         PelaajanKasi tietokone = new PelaajanKasi();
-
+        
         testipakka.sekoitaPakka();
+
         pelaaja.otaKortti(testipakka.jaaKortti());
         pelaaja.otaKortti(testipakka.jaaKortti());
+        pelaaja.tarkistaAssat();
         pelaaja.selvitaSumma();
+        System.out.println(pelaaja.summa);
         pelaaja.onkoBlackjack();
 
-        int pelaajanSumma = pelaaja.selvitaSumma();
-        int tietokoneenSumma = tietokone.naytaSumma();
-
-        System.out.println(pelaajanSumma);
-        
         while (true) {
-            System.out.println("Summa: " + pelaajanSumma + " Nosta kortti? Y/N");
+
+            if (pelaaja.summa > 21) {
+                System.out.println(pelaaja.summa + " Hävisit pelin!");
+                break; //pelaaja häviää samantien, peli päättyy.
+            }
+
+            System.out.println("Summa: " + pelaaja.summa + " Nosta kortti? Y/N");
             String vastaus = lukija.nextLine();
             if (vastaus.equalsIgnoreCase("Y")) {
                 pelaaja.otaKortti(testipakka.jaaKortti());
@@ -44,38 +48,43 @@ public class Blackjack {
             } else {
                 System.out.println("Tunnistamaton vastaus. Kirjoita Y tai N.");
             }
-
         }
+        if (pelaaja.summa <= 21) {
+            System.out.println("Summa: " + pelaaja.summa);
+            System.out.println("Vuoro siirtyy...");
 
-        System.out.println("Summa: " + pelaaja.pelaajanSumma);
-        System.out.println("Vuoro siirtyy...");
+            tietokone.otaKortti(testipakka.jaaKortti());
+            tietokone.otaKortti(testipakka.jaaKortti());
+            tietokone.selvitaSumma();
+            tietokone.onkoBlackjack();
 
-        while (tietokone.pelaajanSumma <= 21) {
-            if (tietokone.pelaajanSumma < 15) {
-                tietokone.otaKortti(testipakka.jaaKortti());
+            while (true) {
+                if (tietokone.summa >= 21) {
+                    break;
+                } else if (tietokone.summa < 15) {
+                    tietokone.otaKortti(testipakka.jaaKortti());
+                    tietokone.selvitaSumma();
+                } else {
+                    break;
+                }
+
+            }
+
+            // Ratkaistaan voittaja:
+            if (tietokone.summa == 21 && pelaaja.summa == 21) {
+                System.out.println("Tasapeli!");
+            } else if (pelaaja.summa != 21 && tietokone.summa == 21) {
+                System.out.println("Blackjack, tietokone voittaa!");
+            } else if (pelaaja.summa == 21 && tietokone.summa != 21) {
+                System.out.println("Blackjack, voitit!");            
+            } else if (pelaaja.summa < 21 && tietokone.summa > 21) {
+                System.out.println("Voitit!");
+            } else if (pelaaja.summa > tietokone.summa) {
+                System.out.println("Voitit!");
             } else {
-                break;
+                System.out.println("Hävisit pelin!");
             }
 
         }
-
-        // Ratkaistaan voittaja:
-        if (tietokone.pelaajanSumma == 21 && pelaaja.pelaajanSumma == 21) {
-            System.out.println("Tasapeli!");
-        } else if (pelaaja.pelaajanSumma != 21 && tietokone.pelaajanSumma == 21) {
-            System.out.println("Blackjack, tietokone voittaa!");
-        } else if (pelaaja.pelaajanSumma == 21 && tietokone.pelaajanSumma != 21) {
-            System.out.println("Blackjack, voitit!");
-        } else if (pelaaja.pelaajanSumma > 21 && tietokone.pelaajanSumma < 21) {
-            System.out.println("Tietokone voittaa!");
-        } else if (pelaaja.pelaajanSumma < 21 && tietokone.pelaajanSumma > 21) {
-            System.out.println("Voitit!");
-        } else if (pelaaja.pelaajanSumma > tietokone.pelaajanSumma) {
-            System.out.println("Voitit!");
-        } else {
-            System.out.println("Hävisit pelin!");
-        }
-
     }
-
 }
