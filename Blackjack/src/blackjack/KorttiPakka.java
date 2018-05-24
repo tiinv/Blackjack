@@ -11,9 +11,8 @@ import java.util.Collections;
  *
  * @author s1800453
  */
-public class KorttiPakka {
-    public class Korttipakka {
-
+public class Korttipakka {
+    
     private final ArrayList<Kortti> kortit;
 
     Korttipakka() {
@@ -44,4 +43,4 @@ public class KorttiPakka {
     }
 
 }
-}
+
