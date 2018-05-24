@@ -38,11 +38,10 @@ public class Korttipakka {
             System.out.println("Kortit loppuivat!");
             System.exit(0); //pakka on käytetty, ohjelma sulkeutuu
         }
-        Kortti nostettu = kortit.get(0);
+        Kortti kortti = kortit.get(0);
         kortit.remove(0);
-        {
-            return nostettu;
-        }
+        return kortti;
+
     }
 
 }

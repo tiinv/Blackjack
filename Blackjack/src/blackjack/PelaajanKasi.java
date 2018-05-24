@@ -14,13 +14,17 @@ import java.util.ArrayList;
 public class PelaajanKasi {
 
     private ArrayList<Kortti> kortit;
+    int pelaajanSumma = 0;
+
+    public PelaajanKasi() {
+        this.kortit = new ArrayList<Kortti>();
+    }
 
     public void otaKortti(Kortti kortti) {
         kortit.add(kortti);
     }
 
     public int selvitaSumma() {
-        int pelajansumma = 0;
 
         if (kortit.size() == 0) {
             System.out.println("Pelajalla ei ole vielä korteja, ota kortti!");
@@ -28,20 +32,20 @@ public class PelaajanKasi {
             for (Kortti kortti : kortit) {
                 int kortinArvo = kortti.getArvo();
                 if (kortinArvo > 1 && kortinArvo <= 10) {
-                    pelajansumma = +kortinArvo;
+                    pelaajanSumma = +kortinArvo;
                 } else if (kortinArvo >= 11 && kortinArvo <= 13) {
-                    pelajansumma = +10;
+                    pelaajanSumma = +10;
                 } else {
-                    pelajansumma = +11;
+                    pelaajanSumma = +11;
                 }
             }
 
-            if (pelajansumma > 21) {
-                pelajansumma = -10;
+            if (pelaajanSumma > 21) {
+                pelaajanSumma = -10;
             }
         }
 
-        return pelajansumma;
+        return pelaajanSumma;
     }
 
     //metodi joka tarkista onko kätenä blackjack
