@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 package blackjack;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Korttipakan luonti ja sekoitus
  *
- * @author s1800302
+ * @author s1800453
  */
-public class Korttipakka {
+public class KorttiPakka {
+    public class Korttipakka {
 
     private final ArrayList<Kortti> kortit;
 
@@ -44,4 +43,5 @@ public class Korttipakka {
 
     }
 
+}
 }
