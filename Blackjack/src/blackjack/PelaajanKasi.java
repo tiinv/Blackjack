@@ -63,12 +63,6 @@ public class PelaajanKasi {
         return summa;
     }
     
-    public void resetSumma() {
-        this.kortit.clear();
-    }
-    
-    
-
     //metodi joka tarkista onko kätenä blackjack
     public boolean onkoBlackjack() {
         boolean onkoBlackjack = false;
